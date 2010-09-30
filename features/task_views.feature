@@ -84,3 +84,11 @@ Feature: See tasks in different, common groupings
     And I go to the "Market Teambox" tasks page
     Then I should see the task called "Tell my friends" in the "This week" task list
 
+  Scenario: See tagged tasks
+    Given I am logged in as "balint"
+    And the task called "Tell my friends" exists
+    And has been tagged "Facebook Friends"
+    When I filter by tag
+    I should "Tell my friends" as well as all other tasks tagged "Facebook Friends"
+    I should further see any sub-tags in an expandable tree view
+
